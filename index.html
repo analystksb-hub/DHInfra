@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Delhi District Hospitals – Infrastructure, Services &amp; HR</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏥</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&amp;display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--bg:#f3f1ff;--sf:#fff;--tx:#1e1b3a;--mu:#6b6890;--bd:#e4e0fb;--hd1:#7c3aed;--hd2:#06b6d4;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12102a;--sf:#1c1940;--tx:#ece9ff;--mu:#a29fc9;--bd:#2f2b63;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12102a;--sf:#1c1940;--tx:#ece9ff;--mu:#a29fc9;--bd:#2f2b63;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.45 'Plus Jakarta Sans',system-ui,'Segoe UI',Arial,sans-serif}
+header{background:linear-gradient(120deg,var(--hd1),#ec4899 55%,#f59e0b);color:#fff;padding:22px clamp(14px,3vw,32px) 18px}
+h1{margin:0;font-size:clamp(20px,3vw,28px);font-weight:800}
+header p{margin:4px 0 0;opacity:.92}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.chip{background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.5);color:#fff;border-radius:99px;padding:3px 11px;font:inherit;font-size:12px;cursor:pointer}
+.chip:hover{background:rgba(255,255,255,.4)}
+#dd label{display:flex;align-items:center;gap:6px;font-weight:600}
+#dd select{border:1px solid rgba(255,255,255,.6);background:rgba(255,255,255,.95);color:#1e1b3a;border-radius:10px;padding:6px 10px;font:inherit;font-size:13px;min-width:150px;cursor:pointer}
+main{padding:18px clamp(14px,3vw,32px) 30px;max-width:1500px;margin:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:12px;margin-bottom:16px}
+.card{border:0;border-radius:16px;padding:13px 14px;color:#fff;text-align:left;font:inherit;cursor:pointer;background:linear-gradient(135deg,var(--a),var(--b));box-shadow:0 6px 16px -8px var(--a);transition:transform .15s,box-shadow .15s;outline-offset:3px}
+.card:hover{transform:translateY(-3px)}
+.card.on{box-shadow:0 0 0 3px var(--bg),0 0 0 6px var(--a)}
+.card small{display:block;opacity:.92;font-size:12px}
+.card b{display:block;font-size:26px;font-weight:800;line-height:1.15;margin:3px 0}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.pn{background:var(--sf);border:1px solid var(--bd);border-radius:16px;padding:13px 14px;min-width:0}
+.pn h2{margin:0 0 2px;font-size:14px;font-weight:800}
+.pn .h{color:var(--mu);font-size:12px;margin-bottom:8px}
+.s4{grid-column:span 4}.s6{grid-column:span 6}.s12{grid-column:span 12}
+@media(max-width:1000px){.s4,.s6{grid-column:span 12}}
+.cv{position:relative;height:250px}
+.sc{max-height:430px;overflow-y:auto}
+.tabs{display:inline-flex;gap:4px;margin:0 0 6px}
+.tabs button,.tb button{border:1px solid var(--bd);background:transparent;color:var(--tx);border-radius:8px;padding:4px 10px;font:inherit;font-size:12px;cursor:pointer}
+.tabs button.on,.tb button.on{background:#7c3aed;color:#fff;border-color:#7c3aed}
+.tb{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:8px}
+.tb input{border:1px solid var(--bd);background:var(--bg);color:var(--tx);border-radius:8px;padding:5px 10px;font:inherit;font-size:12px;min-width:200px}
+.tw{overflow:auto;max-height:560px;border:1px solid var(--bd);border-radius:10px}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:12px}
+th,td{padding:5px 8px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--bd)}
+th{position:sticky;top:0;background:var(--sf);cursor:pointer;z-index:2;font-weight:800;vertical-align:bottom}
+th.hl{background:#7c3aed;color:#fff}
+td:first-child,th:first-child{text-align:left;position:sticky;left:0;background:var(--sf);z-index:1;max-width:230px;overflow:hidden;text-overflow:ellipsis}
+th:first-child{z-index:3}
+td:nth-child(2),th:nth-child(2){text-align:left}
+tbody tr{cursor:pointer}
+tbody tr:hover td{filter:brightness(.96)}
+tr.sel td:first-child{box-shadow:inset 4px 0 #7c3aed;font-weight:800}
+tr.dim{opacity:.4}
+tfoot td{position:sticky;bottom:0;background:var(--sf);font-weight:800;border-top:2px solid #7c3aed}
+.g4{background:#10b98133}.g3{background:#84cc1633}.g2{background:#f59e0b40}.g1{background:#f43f5e40}.g0{color:var(--mu)}
+.lg{display:flex;gap:10px;flex-wrap:wrap;font-size:11px;color:var(--mu);margin-top:8px}
+.lg i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+footer{color:var(--mu);font-size:12px;margin-top:16px}
+</style></head>
+<body>
+<header>
+<h1>Delhi District Hospitals – Infrastructure, Services &amp; HR</h1>
+<p id="sub">Mar 2026 data · report as on 30 Oct 2026</p>
+<div class="bar" id="dd"></div>
+<div class="bar" id="chips"></div>
+</header>
+<main>
+<section class="cards" id="cards" aria-label="Score cards"></section>
+<section class="grid">
+<div class="pn s4"><h2>Hospitals by district</h2><div class="h">Click a slice to filter</div><div class="cv"><canvas id="cDist"></canvas></div></div>
+<div class="pn s4"><h2>Hospitals by facility type</h2><div class="h">Click a bar to filter</div><div class="cv"><canvas id="cType"></canvas></div></div>
+<div class="pn s4"><h2>Administrative body</h2><div class="h">Click a slice to filter</div><div class="cv"><canvas id="cAdm"></canvas></div></div>
+<div class="pn s6"><h2>24×7 beds by hospital</h2><div class="h">Sanctioned vs functional · click a bar to select a hospital</div><div class="sc"><div id="wBeds"><canvas id="cBeds"></canvas></div></div></div>
+<div class="pn s6"><h2>HR fill rate by hospital</h2><div class="h">In-position ÷ sanctioned posts · lowest first · click to select</div><div class="sc"><div id="wFill"><canvas id="cFill"></canvas></div></div></div>
+<div class="pn s4"><h2>Beds by ward type</h2><div class="h">Click a bar: hospitals with that ward</div><div class="cv" style="height:360px"><canvas id="cBt"></canvas></div></div>
+<div class="pn s4"><h2>Posts by cadre</h2><div class="h">Sanctioned vs in-position · click a cadre to filter and highlight its table column</div><div class="cv" style="height:360px"><canvas id="cHr"></canvas></div></div>
+<div class="pn s4"><h2>Availability across hospitals</h2><div class="tabs" id="avTabs"></div><div class="cv" style="height:318px"><canvas id="cAv"></canvas></div></div>
+<div class="pn s12"><h2>HR count by hospital and cadre</h2><div class="h">Total of regular, contractual and outsourced staff · click a row to select a hospital · click a column to sort</div>
+<div class="tb" id="tb"></div><div class="tw"><table id="tbl"></table></div>
+<div class="lg"><span><i class="g4"></i>fully staffed (≥100%)</span><span><i class="g3"></i>75–99%</span><span><i class="g2"></i>50–74%</span><span><i class="g1"></i>below 50%</span><span>– no posts and no staff</span></div></div>
+</section>
+<footer id="foot"></footer>
+</main>
+<script>
+const D={"meta":{"bed":["Male","Female","Paediatric","NBSU","SNCU","ICU","HDU","NRC","Private ward","Burn ward","Isolation","Other 24x7"],"svc":["24x7 emergency / casualty","General medicine","General surgery","Obstetrics & gynae","Anaesthesia","Paediatrics","Orthopaedics","Blood bank","Haemodialysis","Oxygen plant","CT scan (in-house)","MRI (in-house)","Teleconsultation","Ambulance"],"eq":["Mechanical ventilator","CTG machine","Crash cart / defibrillator","Functional labour room","Functional OT","CT scan","MRI","USG colour Doppler","Digital X-ray","C-arm","Dialysis unit","Functional laboratory"],"inf":["Disability-friendly","Fire & disaster certified","Eco-friendly building","Uninterrupted power","24x7 piped water","CCTV","Citizen’s charter","Mortuary","Medical records","Skill lab","Effluent plant","Staff residence"],"hrk":["Superintendent","Nursing supt.","Doctors","Specialists","Medical officers","Senior resident","Junior resident","ANM","Staff nurse","Lab technician","Radiographer","Pharmacist","Physiotherapist","OT technician"]},"rows":[{"n":"Aruna Asaf Ali Hospital","d":"Central","t":"DH 100-199 Bedded","a":"State","sb":100,"fb":100,"ob":12,"vent":1,"oxb":66,"bt":[[26,26],[48,48],[13,13],[7,7],[2,2],[4,4],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],"inf":[0,0,1,1,1,1,1,1,1,0,1,0],"svc":[1,1,1,1,1,1,1,0,0,1,0,0,0,1],"eq":[1,0,1,1,1,0,0,1,0,0,0,1],"hr":[[1,1],[1,1],[46,41],[22,18],[24,23],[40,38],[27,27],[1,1],[90,83],[9,9],[18,10],[9,5],[1,1],[3,3]],"hrt":[290,264]},{"n":"Burari Hospital","d":"Central","t":"DH 300-399 Bedded","a":"State","sb":768,"fb":350,"ob":70,"vent":20,"oxb":350,"bt":[[150,75],[350,175],[100,50],[0,0],[20,6],[80,20],[0,0],[0,0],[0,0],[0,0],[20,10],[48,14]],"inf":[1,1,1,1,1,1,1,1,1,1,1,1],"svc":[1,1,1,1,1,1,1,0,1,1,0,0,0,0],"eq":[1,1,1,1,1,0,0,0,0,0,1,1],"hr":[[1,1],[1,0],[62,43],[42,25],[20,18],[126,87],[72,60],[0,0],[416,334],[8,4],[12,8],[14,7],[3,0],[15,1]],"hrt":[776,551]},{"n":"Girdhari Lal Maternity Hospital","d":"Central","t":"Other Tertiary Care Facility","a":"ULB","sb":97,"fb":97,"ob":10,"vent":0,"oxb":60,"bt":[[0,0],[87,87],[0,0],[0,0],[10,10],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],"inf":[1,0,0,1,1,1,1,0,1,0,1,1],"svc":[0,1,0,1,1,1,0,0,0,0,0,0,0,1],"eq":[0,1,1,1,1,0,0,0,0,0,0,1],"hr":[[3,3],[0,0],[23,20],[13,10],[10,10],[0,0],[0,0],[0,0],[41,34],[4,4],[1,1],[4,3],[0,0],[4,4]],"hrt":[83,71]},{"n":"Govind Ballabh Pant Hospital","d":"Central","t":"Other Tertiary Care Facility","a":"State","sb":758,"fb":758,"ob":0,"vent":99,"oxb":598,"bt":[[0,0],[0,0],[0,0],[0,0],[0,0],[186,186],[0,0],[0,0],[105,105],[0,0],[0,0],[467,467]],"inf":[0,1,0,1,1,1,1,0,1,1,1,1],"svc":[1,0,0,0,1,0,0,1,0,1,1,1,1,1],"eq":[1,0,1,0,1,1,1,1,1,1,0,1],"hr":[[0,0],[1,0],[96,73],[75,52],[21,21],[261,168],[113,63],[0,0],[902,765],[89,70],[26,19],[25,22],[6,5],[0,0]],"hrt":[1674,1286]},{"n":"Guru Nanak Eye Hospital","d":"Central","t":"Other Tertiary Care Facility","a":"State","sb":0,"fb":0,"ob":0,"vent":0,"oxb":0,"bt":[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],"inf":[1,1,1,1,1,1,1,1,1,1,1,1],"svc":[1,0,0,0,0,0,0,0,0,1,0,0,0,0],"eq":[0,0,0,0,1,0,0,1,1,0,0,1],"hr":[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],"hrt":[0,0]},{"n":"Kasturba Hospital","d":"Central","t":"Other Tertiary Care Facility","a":"ULB","sb":450,"fb":450,"ob":31,"vent":20,"oxb":45,"bt":[[0,0],[341,341],[62,62],[0,0],[35,35],[0,0],[3,3],[0,0],[9,9],[0,0],[0,0],[0,0]],"inf":[0,1,1,1,1,0,0,0,1,1,0,1],"svc":[1,1,1,1,1,1,0,1,0,1,0,0,0,1],"eq":[0,0,1,1,1,0,0,0,1,0,0,1],"hr":[[1,1],[1,0],[135,55],[39,20],[96,35],[19,9],[47,46],[0,0],[150,131],[18,12],[2,2],[12,8],[3,2],[10,7]],"hrt":[423,281]},{"n":"Chacha Nehru Bal Chikitsalaya","d":"East","t":"Other Tertiary Care Facility","a":"State","sb":221,"fb":221,"ob":0,"vent":0,"oxb":0,"bt":[[0,0],[0,0],[144,144],[0,0],[24,24],[12,12],[0,0],[17,17],[0,0],[0,0],[0,0],[24,24]],"inf":[0,1,1,1,1,1,1,1,1,1,1,1],"svc":[1,0,1,0,1,1,1,1,0,1,0,0,0,1],"eq":[0,0,1,0,1,0,1,1,1,1,1,1],"hr":[[0,0],[0,0],[66,25],[61,23],[5,2],[98,47],[87,39],[0,0],[539,109],[32,11],[8,5],[15,10],[2,2],[12,6]],"hrt":[906,274]},{"n":"Lal Bahadur Shastri Hospital","d":"East","t":"DH 100-199 Bedded","a":"State","sb":100,"fb":100,"ob":60,"vent":0,"oxb":0,"bt":[[25,25],[25,25],[25,25],[0,0],[0,12],[0,6],[0,7],[0,0],[0,0],[0,0],[0,0],[25,0]],"inf":[1,1,1,1,1,1,1,1,1,1,1,1],"svc":[1,1,1,1,1,1,1,1,0,1,0,0,0,1],"eq":[1,1,1,1,1,0,0,1,1,1,0,1],"hr":[[1,0],[0,0],[79,68],[48,42],[31,26],[66,63],[40,36],[0,0],[155,137],[8,8],[13,13],[14,10],[1,1],[13,10]],"hrt":[424,370]},{"n":"Charak Palika Hospital NDMC","d":"New Delhi","t":"Other Tertiary Care Facility","a":"ULB","sb":177,"fb":177,"ob":5,"vent":0,"oxb":165,"bt":[[73,73],[59,59],[23,23],[0,0],[0,0],[0,0],[7,7],[0,0],[3,3],[0,0],[0,0],[12,12]],"inf":[1,1,1,1,1,1,1,1,0,0,1,1],"svc":[1,1,1,0,1,1,1,0,0,1,0,0,0,1],"eq":[0,0,1,0,1,1,1,1,1,1,0,1],"hr":[[1,1],[3,3],[79,79],[13,13],[66,66],[34,25],[30,21],[87,72],[134,89],[38,24],[11,5],[61,43],[7,7],[9,6]],"hrt":[561,410]},{"n":"Kalawati Saran Children Hospital","d":"New Delhi","t":"Other Tertiary Care Facility","a":"Central","sb":null,"fb":null,"ob":null,"vent":null,"oxb":null,"bt":[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],"inf":[null,null,null,null,null,null,null,null,null,null,null,null],"svc":[null,null,null,null,null,null,null,null,null,null,null,null,null,null],"eq":[null,null,null,null,null,null,null,null,null,null,null,null],"hr":[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],"hrt":[0,0]},{"n":"Babu Jagjeevan Ram Memorial Hospital  Jahangirpuri","d":"North","t":"DH 100-199 Bedded","a":"State","sb":150,"fb":150,"ob":10,"vent":0,"oxb":150,"bt":[[70,70],[49,49],[29,29],[0,0],[0,0],[0,0],[2,2],[0,0],[0,0],[0,0],[0,0],[0,0]],"inf":[1,1,1,1,1,1,1,1,1,1,1,1],"svc":[1,1,1,1,1,1,1,0,0,0,0,0,1,1],"eq":[0,0,1,1,1,0,0,0,1,1,0,1],"hr":[[1,1],[0,0],[57,36],[30,17],[27,19],[45,38],[45,45],[2,2],[142,124],[5,5],[8,8],[8,4],[1,1],[5,1]],"hrt":[327,266]},{"n":"MVID HOSPITAL","d":"North","t":"Other Tertiary Care Facility","a":"ULB","sb":150,"fb":150,"ob":4,"vent":0,"oxb":0,"bt":[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[146,146],[4,4]],"inf":[1,0,1,1,1,1,1,0,1,0,0,1],"svc":[0,1,0,0,0,1,0,0,0,1,null,null,0,0],"eq":[0,0,1,0,0,0,0,0,0,0,0,1],"hr":[[1,1],[0,0],[15,9],[6,0],[9,9],[4,3],[5,3],[0,0],[36,26],[1,1],[1,0],[4,2],[0,0],[1,0]],"hrt":[72,45]},{"n":"RBIPMT HOSPITAL","d":"North","t":"Other Tertiary Care Facility","a":"ULB","sb":740,"fb":653,"ob":20,"vent":20,"oxb":621,"bt":[[518,439],[182,182],[0,0],[0,0],[0,0],[0,0],[20,20],[0,0],[20,12],[0,0],[0,0],[0,0]],"inf":[1,0,1,1,1,0,1,1,1,1,0,0],"svc":[0,0,0,0,1,0,0,0,0,0,0,0,0,1],"eq":[0,0,0,0,1,0,0,0,1,0,0,1],"hr":[[1,1],[1,1],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],"hrt":[3,3]},{"n":"Maharishi Valmiki Hospital","d":"North","t":"DH 100-199 Bedded","a":"State","sb":150,"fb":150,"ob":0,"vent":0,"oxb":126,"bt":[[42,42],[60,60],[12,12],[2,2],[15,15],[0,0],[15,15],[0,0],[0,0],[0,0],[4,4],[0,0]],"inf":[1,1,1,1,1,1,1,0,1,0,1,1],"svc":[1,1,1,1,1,1,1,0,1,1,0,0,1,1],"eq":[1,1,1,1,1,0,0,1,1,1,1,1],"hr":[[1,1],[0,0],[36,27],[19,13],[17,14],[40,33],[30,29],[5,5],[117,117],[9,5],[13,9],[6,5],[1,1],[11,6]],"hrt":[286,248]},{"n":"Satyawadi Raja Harishchandra Hospital","d":"North","t":"DH 200-299 Bedded","a":"State","sb":203,"fb":203,"ob":20,"vent":0,"oxb":200,"bt":[[77,77],[81,81],[41,41],[0,0],[4,4],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],"inf":[1,1,1,1,1,1,1,0,1,0,1,1],"svc":[1,1,1,1,1,1,1,0,0,1,0,0,0,1],"eq":[1,0,1,1,1,0,0,0,1,1,0,1],"hr":[[1,1],[0,0],[41,29],[25,13],[16,16],[43,38],[34,32],[4,4],[123,117],[2,2],[13,9],[12,7],[2,2],[2,2]],"hrt":[297,254]},{"n":"DH JPC HOSPITAL","d":"North East","t":"DH 200-299 Bedded","a":"State","sb":200,"fb":240,"ob":34,"vent":0,"oxb":0,"bt":[[30,32],[97,97],[22,22],[0,0],[16,17],[7,10],[10,10],[0,0],[0,0],[0,0],[18,18],[0,34]],"inf":[1,1,1,1,1,1,1,0,1,0,1,1],"svc":[1,1,1,1,1,1,1,0,0,1,0,0,1,1],"eq":[0,1,1,1,1,0,0,1,1,0,0,1],"hr":[[1,1],[0,0],[49,38],[30,23],[19,15],[60,52],[37,37],[0,0],[128,126],[5,3],[7,5],[16,11],[2,1],[2,1]],"hrt":[339,292]},{"n":"Sanjay Gandhi Memorial Hospital Mangolpuri","d":"North West","t":"DH 300-399 Bedded","a":"State","sb":300,"fb":300,"ob":108,"vent":0,"oxb":300,"bt":[[66,66],[159,159],[30,30],[20,20],[6,6],[8,8],[0,0],[0,0],[0,0],[0,0],[0,0],[11,11]],"inf":[0,1,1,1,1,1,1,1,1,1,1,1],"svc":[1,1,1,1,1,1,1,1,0,1,0,0,1,1],"eq":[1,0,0,1,1,null,0,1,1,0,0,1],"hr":[[1,1],[1,1],[143,93],[105,66],[38,27],[96,56],[72,46],[4,4],[243,222],[17,15],[6,6],[10,10],[2,2],[8,8]],"hrt":[623,477]},{"n":"Bhagwan mahavir Hospital Pitampura","d":"North West","t":"DH 300-399 Bedded","a":"State","sb":325,"fb":325,"ob":61,"vent":0,"oxb":0,"bt":[[213,213],[68,68],[24,24],[0,0],[0,0],[10,10],[0,0],[10,10],[0,0],[0,0],[0,0],[0,0]],"inf":[1,1,1,1,1,1,1,1,1,null,null,1],"svc":[1,1,1,1,1,1,1,1,1,null,0,0,null,null],"eq":[1,1,null,1,1,null,0,1,1,1,1,1],"hr":[[1,1],[0,0],[37,26],[34,23],[3,3],[109,63],[50,15],[3,3],[220,163],[6,5],[8,6],[10,8],[2,2],[5,4]],"hrt":[466,304]},{"n":"Deep Chand Bandhu Hospital","d":"North West","t":"DH 100-199 Bedded","a":"State","sb":250,"fb":250,"ob":75,"vent":0,"oxb":250,"bt":[[60,60],[66,66],[27,27],[0,0],[20,20],[8,8],[19,19],[0,0],[0,0],[0,0],[0,0],[50,50]],"inf":[1,1,1,1,1,1,1,0,1,1,1,1],"svc":[1,1,1,1,1,1,1,0,1,1,0,0,1,1],"eq":[1,1,1,1,1,0,0,1,1,1,1,1],"hr":[[1,1],[2,0],[56,36],[32,23],[24,13],[68,58],[47,46],[0,0],[126,125],[5,5],[9,9],[15,9],[2,1],[3,2]],"hrt":[354,300]},{"n":"Delhi State Cancer Institute","d":"Shahdara","t":"Other Tertiary Care Facility","a":"State","sb":236,"fb":236,"ob":12,"vent":0,"oxb":0,"bt":[[74,74],[0,0],[14,14],[0,0],[0,0],[6,6],[0,0],[0,0],[59,59],[0,0],[0,0],[83,83]],"inf":[1,1,1,1,1,1,1,0,1,0,1,0],"svc":[0,0,1,0,1,0,0,1,0,1,1,0,0,0],"eq":[null,null,null,0,1,null,null,null,null,null,null,1],"hr":[[0,0],[1,0],[149,21],[149,21],[0,0],[102,44],[67,63],[0,0],[191,92],[38,19],[15,8],[13,8],[3,0],[22,5]],"hrt":[635,266]},{"n":"DH SDN HOSPITAL","d":"Shahdara","t":"DH 300-399 Bedded","a":"ULB","sb":370,"fb":370,"ob":90,"vent":0,"oxb":0,"bt":[[64,64],[177,177],[40,40],[0,0],[20,20],[6,6],[10,10],[0,0],[11,11],[9,9],[6,6],[27,27]],"inf":[1,1,1,0,1,1,1,1,1,1,1,0],"svc":[null,null,null,null,null,null,null,null,null,null,null,null,null,null],"eq":[1,1,1,1,1,0,0,0,1,0,0,1],"hr":[[1,1],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],"hrt":[1,1]},{"n":"Institute of Human Behaviour & Allied Science","d":"Shahdara","t":"Other Tertiary Care Facility","a":"State","sb":313,"fb":313,"ob":0,"vent":14,"oxb":14,"bt":[[65,65],[68,68],[0,0],[0,0],[0,0],[22,22],[0,0],[0,0],[10,10],[0,0],[8,8],[140,140]],"inf":[1,1,1,1,1,1,1,0,1,0,1,1],"svc":[0,0,0,0,0,0,0,0,0,1,1,0,0,1],"eq":[1,0,1,0,1,0,0,0,1,0,0,1],"hr":[[0,0],[0,0],[153,72],[153,72],[0,0],[70,70],[80,80],[0,0],[233,233],[9,7],[7,7],[12,12],[7,7],[3,2]],"hrt":[1507,1309]},{"n":"Rajiv Gandhi Super Speciality Hospital","d":"Shahdara","t":"Other Tertiary Care Facility","a":"State","sb":null,"fb":null,"ob":null,"vent":null,"oxb":null,"bt":[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],"inf":[null,null,null,null,null,null,null,null,null,null,null,null],"svc":[null,null,null,null,null,null,null,null,null,null,null,null,null,null],"eq":[null,null,null,null,null,null,null,null,null,null,null,null],"hr":[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],"hrt":[0,0]},{"n":"Hedgewar Hospital","d":"Shahdara","t":"DH 200-299 Bedded","a":"State","sb":200,"fb":200,"ob":14,"vent":5,"oxb":143,"bt":[[74,74],[93,93],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[33,33]],"inf":[1,1,1,1,1,1,1,0,1,0,1,0],"svc":[null,null,null,null,null,null,null,null,null,null,null,null,null,null],"eq":[null,null,null,1,1,null,null,null,null,null,null,1],"hr":[[1,1],[2,1],[48,42],[28,23],[20,19],[59,39],[40,35],[0,0],[146,101],[8,2],[9,7],[13,9],[0,0],[7,2]],"hrt":[352,257]},{"n":"Pt. Madan Mohan Malviya Hospital","d":"South","t":"DH 100-199 Bedded","a":"State","sb":93,"fb":93,"ob":36,"vent":0,"oxb":93,"bt":[[21,21],[40,40],[15,15],[0,0],[5,5],[6,6],[0,0],[0,0],[0,0],[0,0],[2,2],[4,4]],"inf":[1,1,1,1,1,1,1,0,1,0,1,0],"svc":[1,1,1,1,1,1,1,0,1,1,0,0,1,1],"eq":[1,1,1,1,1,0,0,0,1,1,1,1],"hr":[[1,1],[0,0],[44,39],[29,25],[15,14],[54,43],[30,30],[3,3],[115,102],[14,10],[8,5],[8,6],[2,2],[7,7]],"hrt":[300,254]},{"n":"Institute of Liver and Billiary Science","d":"South","t":"Other Tertiary Care Facility","a":"State","sb":549,"fb":357,"ob":109,"vent":35,"oxb":357,"bt":[[0,0],[0,0],[38,26],[0,0],[0,0],[76,49],[35,28],[0,0],[90,68],[0,0],[10,6],[300,180]],"inf":[1,1,1,1,1,1,1,1,1,1,1,1],"svc":[1,1,0,0,1,1,0,1,1,1,1,1,1,1],"eq":[1,0,1,0,1,1,1,1,1,1,1,1],"hr":[[2,1],[2,1],[140,59],[138,58],[2,1],[178,87],[47,17],[0,0],[705,431],[90,90],[29,14],[17,17],[9,7],[31,10]],"hrt":[1370,783]},{"n":"National Institute of TB and Respiratory","d":"South","t":"Other Tertiary Care Facility","a":"Central","sb":445,"fb":445,"ob":25,"vent":0,"oxb":0,"bt":[[204,204],[111,111],[34,34],[0,0],[0,0],[14,14],[0,0],[0,0],[33,33],[0,0],[0,0],[49,49]],"inf":[1,1,0,1,0,1,1,1,1,0,0,1],"svc":[1,0,0,0,1,1,0,0,0,1,1,1,0,1],"eq":[1,0,1,0,1,1,1,1,1,0,0,1],"hr":[[2,2],[1,1],[67,56],[16,15],[51,41],[0,0],[0,0],[0,0],[76,72],[44,36],[8,8],[38,31],[1,1],[7,6]],"hrt":[278,242]},{"n":"Ambedkar Nagar Hospital, Dakshinpuri","d":"South","t":"DH 300-399 Bedded","a":"State","sb":600,"fb":200,"ob":25,"vent":0,"oxb":0,"bt":[[150,50],[150,50],[140,45],[10,5],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[150,50]],"inf":[1,0,0,1,0,1,1,1,1,0,1,0],"svc":[1,1,1,1,0,1,1,0,1,0,0,0,0,1],"eq":[0,0,1,1,1,0,0,0,0,0,1,1],"hr":[[1,0],[0,0],[66,13],[22,6],[44,7],[21,19],[14,14],[1,0],[452,39],[0,0],[7,3],[11,6],[4,1],[9,1]],"hrt":[601,101]},{"n":"Indira Gandhi Hospital","d":"South West","t":"DH more than 499 Bedded","a":"State","sb":1241,"fb":500,"ob":177,"vent":10,"oxb":300,"bt":[[397,154],[487,214],[110,90],[10,0],[20,16],[169,10],[0,0],[10,0],[0,0],[22,0],[16,16],[0,0]],"inf":[1,1,1,1,1,1,1,1,1,1,1,0],"svc":[1,1,1,1,1,1,1,0,1,1,1,1,1,1],"eq":[1,1,1,1,1,1,1,1,1,1,1,1],"hr":[[1,1],[1,0],[73,57],[55,40],[18,17],[113,70],[116,77],[0,0],[774,124],[14,1],[15,5],[28,4],[5,1],[28,2]],"hrt":[1240,352]},{"n":"Janakpuri Super Speciality Hospital","d":"South West","t":"Other Tertiary Care Facility","a":"State","sb":300,"fb":150,"ob":56,"vent":0,"oxb":0,"bt":[[150,75],[150,75],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],"inf":[1,1,1,1,1,1,1,0,1,0,1,0],"svc":[0,0,0,0,1,0,0,0,1,0,0,0,0,0],"eq":[1,0,null,0,1,1,1,1,0,0,1,1],"hr":[[0,0],[0,0],[16,10],[7,3],[9,7],[77,54],[30,26],[0,0],[174,71],[25,15],[25,12],[8,7],[1,1],[0,0]],"hrt":[379,205]},{"n":"Shri Dada Dev Matri Avum Shishu Chikitsalya Hospital","d":"South West","t":"DH 100-199 Bedded","a":"State","sb":135,"fb":92,"ob":43,"vent":2,"oxb":18,"bt":[[0,0],[91,48],[24,24],[0,0],[16,16],[0,0],[0,0],[0,0],[0,0],[0,0],[4,4],[0,0]],"inf":[1,1,1,1,0,1,1,0,1,0,1,1],"svc":[1,1,0,1,1,1,0,0,0,1,0,0,0,0],"eq":[0,1,1,1,1,0,0,1,1,0,0,1],"hr":[[1,1],[0,0],[167,17],[69,12],[98,5],[38,29],[27,20],[0,0],[248,80],[14,6],[4,4],[10,3],[3,1],[9,0]],"hrt":[550,167]},{"n":"Rao Tula Ram Hospital","d":"South West","t":"DH 100-199 Bedded","a":"State","sb":100,"fb":100,"ob":42,"vent":0,"oxb":100,"bt":[[25,25],[49,49],[26,26],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],"inf":[1,1,0,1,1,1,1,1,1,0,1,0],"svc":[1,1,1,1,1,1,1,0,0,1,0,0,1,0],"eq":[0,0,1,1,1,0,0,0,0,1,0,1],"hr":[[1,1],[0,0],[49,43],[22,14],[27,29],[37,32],[26,22],[0,0],[103,99],[4,2],[6,5],[8,7],[1,0],[6,5]],"hrt":[282,238]},{"n":"Acharya Shree Bhikshu Hospital","d":"West","t":"DH 100-199 Bedded","a":"State","sb":150,"fb":150,"ob":25,"vent":0,"oxb":110,"bt":[[60,60],[50,50],[30,30],[0,0],[10,10],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],"inf":[1,1,1,1,1,1,1,0,1,1,1,1],"svc":[1,1,1,1,1,1,1,0,0,0,0,0,1,1],"eq":[0,1,1,0,1,0,0,1,0,1,0,1],"hr":[[1,0],[0,0],[12,12],[12,12],[0,0],[45,45],[34,34],[3,3],[110,97],[5,3],[6,6],[11,6],[1,1],[4,2]],"hrt":[258,222]},{"n":"Guru Gobind Singh Govt Hospital","d":"West","t":"DH 100-199 Bedded","a":"State","sb":150,"fb":150,"ob":26,"vent":0,"oxb":150,"bt":[[24,24],[86,86],[18,18],[0,0],[18,18],[0,0],[4,4],[0,0],[0,0],[0,0],[0,0],[0,0]],"inf":[1,1,1,1,1,1,1,0,1,0,1,1],"svc":[1,1,1,1,1,1,1,0,1,1,0,0,0,1],"eq":[0,1,1,1,1,0,0,0,1,1,1,1],"hr":[[1,1],[0,0],[43,29],[26,17],[17,12],[58,54],[32,32],[0,0],[125,122],[4,3],[10,8],[12,9],[2,1],[4,4]],"hrt":[355,303]},{"n":"CENTRAL JAIL HOSPITAL TIHAR","d":"West","t":"Other Tertiary Care Facility","a":"State","sb":null,"fb":null,"ob":null,"vent":null,"oxb":null,"bt":[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],"inf":[null,null,null,null,null,null,null,null,null,null,null,null],"svc":[null,null,null,null,null,null,null,null,null,null,null,null,null,null],"eq":[null,null,null,null,null,null,null,null,null,null,null,null],"hr":[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],"hrt":[0,0]},{"n":"Deendayal Upadhyay Hospital","d":"West","t":"DH more than 499 Bedded","a":"State","sb":640,"fb":640,"ob":640,"vent":24,"oxb":640,"bt":[[255,255],[300,300],[34,34],[0,0],[25,25],[10,10],[6,6],[0,0],[0,0],[0,0],[10,10],[0,0]],"inf":[1,1,1,1,1,1,1,1,1,1,1,1],"svc":[1,1,1,1,1,1,1,1,1,1,0,1,0,null],"eq":[1,1,1,1,1,1,0,1,1,1,1,1],"hr":[[1,1],[1,0],[115,77],[30,23],[85,54],[188,151],[215,204],[0,0],[713,541],[64,21],[0,0],[19,13],[4,3],[16,16]],"hrt":[1391,1038]}]},M=D.meta,R=D.rows;
+const $=s=>document.querySelector(s),fmt=n=>Math.round(n).toLocaleString('en-IN'),sum=(a,f)=>a.reduce((x,r)=>x+(f(r)||0),0);
+const PAL=['#7c3aed','#06b6d4','#f43f5e','#f59e0b','#10b981','#3b82f6','#ec4899','#84cc16','#f97316','#14b8a6'];
+const S={dist:new Set(),type:new Set(),adm:new Set(),fac:new Set(),flags:new Set(),av:'svc',view:'inpos',sort:['n',1],q:''};
+const I={icu:M.bed.indexOf('ICU'),o2:M.svc.indexOf('Oxygen plant'),bb:M.svc.indexOf('Blood bank'),doc:M.hrk.indexOf('Doctors'),nur:M.hrk.indexOf('Staff nurse')};
+const FN={beds:[r=>r.sb>0,'Has 24×7 beds'],gap:[r=>r.sb!=null&&r.fb<r.sb,'Functional beds below sanctioned'],icu:[r=>r.bt[I.icu][1]>0,'Has functional ICU beds'],vent:[r=>r.vent>0,'Has ventilator-supported beds'],
+doc:[r=>r.hr[I.doc][1]<r.hr[I.doc][0],'Doctor posts vacant'],nur:[r=>r.hr[I.nur][1]<r.hr[I.nur][0],'Staff nurse posts vacant'],low:[r=>r.hrt[0]>0&&r.hrt[1]/r.hrt[0]<.75,'HR fill rate below 75%'],
+o2:[r=>r.svc[I.o2]==1,'Oxygen plant available'],bb:[r=>r.svc[I.bb]==1,'Blood bank available'],em:[r=>r.svc[0]==1,'24×7 emergency available']};
+const flag=k=>{if(FN[k])return FN[k];const[t,i]=k.split(':');return t=='bt'?[r=>r.bt[+i][0]>0,M.bed[i]+' beds present']:t=='hr'?[r=>r.hr[+i][0]>0,M.hrk[i]+' posts sanctioned']:[r=>r[t][+i]==1,M[t][i]]};
+const DIMS={dist:r=>r.d,type:r=>r.t,adm:r=>r.a,fac:r=>r.n};
+const pass=(r,skip)=>{for(const k in DIMS)if(k!=skip&&S[k].size&&!S[k].has(DIMS[k](r)))return false;for(const f of S.flags)if(!flag(f)[0](r))return false;return true};
+const tog=(set,v)=>{set.has(v)?set.delete(v):set.add(v);render()};
+const reset=()=>{for(const k in DIMS)S[k].clear();S.flags.clear();render()};
+const fill=(s,p)=>s?p/s:null;
+const css=getComputedStyle(document.documentElement);
+Chart.defaults.color=css.getPropertyValue('--mu').trim()||'#6b6890';Chart.defaults.font.family="'Plus Jakarta Sans',system-ui,sans-serif";Chart.defaults.borderColor='rgba(128,120,190,.2)';
+const C={};
+function put(id,type,labels,sets,opt,ids,onclick){
+ let c=C[id];
+ if(!c){c=C[id]=new Chart($('#'+id),{type,data:{labels,datasets:sets},options:Object.assign({responsive:true,maintainAspectRatio:false,animation:{duration:350},plugins:{legend:{display:sets.length>1||type=='doughnut',position:type=='doughnut'?'bottom':'top',labels:{boxWidth:10,usePointStyle:true}}},onClick:(e,els)=>{if(els.length&&c._ids)onclick(c._ids[els[0].index])},onHover:(e,els)=>{e.native.target.style.cursor=els.length?'pointer':'default'}},opt)})}
+ else{c.data.labels=labels;c.data.datasets=sets;c.update()}
+ c._ids=ids;return c}
+const dim=(base,sel)=>base.map(c=>sel.size==0||sel.has(c.id)?c.col:c.col+'3a');
+function dimChart(id,key,type){
+ const cnt={};R.forEach(r=>{const v=DIMS[key](r);cnt[v]=cnt[v]||0});R.filter(r=>pass(r,key)).forEach(r=>cnt[DIMS[key](r)]++);
+ const tot={};R.forEach(r=>{const v=DIMS[key](r);tot[v]=(tot[v]||0)+1});
+ const ks=Object.keys(tot).sort((a,b)=>tot[b]-tot[a]||a.localeCompare(b));
+ const cols=ks.map((k,i)=>({id:k,col:PAL[i%PAL.length]}));
+ const opt=type=='bar'?{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{ticks:{precision:0}}}}:{cutout:'58%'};
+ put(id,type=='bar'?'bar':'doughnut',ks,[{label:'Hospitals',data:ks.map(k=>cnt[k]),backgroundColor:dim(cols,S[key]),borderWidth:type=='bar'?0:2,borderColor:css.getPropertyValue('--sf').trim(),borderRadius:type=='bar'?6:0}],opt,ks,v=>tog(S[key],v))}
+const shade=(c,on)=>on?c:c+'44';
+function syncDD(){[['dist','District','d'],['adm','Agency','a']].forEach(([k,l,f])=>{let s=document.getElementById('dd_'+k);if(!s){const w=document.createElement('label');w.textContent=l;s=document.createElement('select');s.id='dd_'+k;s.setAttribute('aria-label',l);const vals=[...new Set(R.map(r=>r[f]))].sort();s.innerHTML='<option value="">All</option>'+vals.map(v=>`<option>${v}</option>`).join('')+'<option value="__m" disabled hidden>Multiple selected</option>';s.onchange=()=>{S[k].clear();if(s.value)S[k].add(s.value);render()};w.append(s);document.getElementById('dd').append(w)}s.value=S[k].size==1?[...S[k]][0]:S[k].size>1?'__m':''})}
+function render(){
+ syncDD();
+ const rs=R.filter(r=>pass(r));
+ $('#sub').textContent=`${rs.length} of ${R.length} hospitals selected · Mar 2026 data · report as on 30 Oct 2026`;
+ // chips
+ const ch=[];for(const k in DIMS)S[k].forEach(v=>ch.push([v,()=>S[k].delete(v)]));S.flags.forEach(f=>ch.push([flag(f)[1],()=>S.flags.delete(f)]));
+ $('#chips').innerHTML='';
+ if(!ch.length)$('#chips').textContent='Click any card, bar, slice or table row – every chart and the HR table update together.';
+ else{ch.forEach(([l,fn])=>{const b=document.createElement('button');b.className='chip';b.textContent=l+'  ✕';b.onclick=()=>{fn();render()};$('#chips').append(b)});const b=document.createElement('button');b.className='chip';b.textContent='Clear all';b.onclick=reset;$('#chips').append(b)}
+ // cards
+ const wb=rs.filter(r=>r.sb!=null),svN=rs.filter(r=>r.svc[0]!=null).length;
+ const hs=sum(rs,r=>r.hrt[0]),hp=sum(rs,r=>r.hrt[1]);
+ const cnt=i=>rs.filter(r=>r.svc[i]==1).length;
+ const CARDS=[
+ ['reset','Hospitals',rs.length,`of ${R.length} · click to reset`,'#7c3aed','#a855f7'],
+ ['beds','Sanctioned 24×7 beds',fmt(sum(rs,r=>r.sb)),`+${fmt(sum(rs,r=>r.ob))} other-than-24×7 beds`,'#0ea5e9','#06b6d4'],
+ ['gap','Functional beds',fmt(sum(rs,r=>r.fb)),`${Math.round(100*sum(wb,r=>r.fb)/Math.max(1,sum(wb,r=>r.sb)))}% of sanctioned`,'#10b981','#84cc16'],
+ ['icu','ICU beds (functional)',fmt(sum(rs,r=>r.bt[I.icu][1])),`of ${fmt(sum(rs,r=>r.bt[I.icu][0]))} sanctioned`,'#f43f5e','#fb7185'],
+ ['vent','Ventilator beds',fmt(sum(rs,r=>r.vent)),`${fmt(sum(rs,r=>r.oxb))} oxygen-supported`,'#f59e0b','#f97316'],
+ ['doc','Doctors in position',fmt(sum(rs,r=>r.hr[I.doc][1])),`of ${fmt(sum(rs,r=>r.hr[I.doc][0]))} sanctioned`,'#6366f1','#8b5cf6'],
+ ['nur','Staff nurses in position',fmt(sum(rs,r=>r.hr[I.nur][1])),`of ${fmt(sum(rs,r=>r.hr[I.nur][0]))} sanctioned`,'#ec4899','#f472b6'],
+ ['low','Overall HR fill rate',hs?Math.round(100*hp/hs)+'%':'–',`${fmt(hp)} of ${fmt(hs)} posts`,'#14b8a6','#22d3ee'],
+ ['o2','Oxygen plants',cnt(I.o2),`of ${svN} reporting hospitals`,'#3b82f6','#60a5fa'],
+ ['bb','Blood banks',cnt(I.bb),`of ${svN} reporting hospitals`,'#e11d48','#f97316'],
+ ['em','24×7 emergency',cnt(0),`of ${svN} reporting hospitals`,'#8b5cf6','#d946ef']];
+ $('#cards').innerHTML=CARDS.map(([k,l,v,s,a,b])=>`<button class="card${S.flags.has(k)?' on':''}" data-k="${k}" style="--a:${a};--b:${b}"><small>${l}</small><b>${v}</b><small>${s}</small></button>`).join('');
+ document.querySelectorAll('.card').forEach(el=>el.onclick=()=>el.dataset.k=='reset'?reset():tog(S.flags,el.dataset.k));
+ // dimension charts
+ dimChart('cDist','dist','doughnut');dimChart('cType','type','bar');dimChart('cAdm','adm','doughnut');
+ // beds & fill per facility
+ const fr=R.filter(r=>pass(r,'fac')),selF=S.fac;
+ const fc=(r,c)=>selF.size==0||selF.has(r.n)?c:c+'3a';
+ const bl=fr.filter(r=>r.sb!=null).sort((a,b)=>b.sb-a.sb),sh=n=>n.length>30?n.slice(0,29)+'…':n;
+ $('#wBeds').style.height=Math.max(220,bl.length*30+50)+'px';
+ put('cBeds','bar',bl.map(r=>sh(r.n)),[{label:'Sanctioned',data:bl.map(r=>r.sb),backgroundColor:bl.map(r=>fc(r,'#7c3aed')),borderRadius:4},{label:'Functional',data:bl.map(r=>r.fb),backgroundColor:bl.map(r=>fc(r,'#06b6d4')),borderRadius:4}],{indexAxis:'y'},bl.map(r=>r.n),v=>tog(S.fac,v));
+ const fl=fr.filter(r=>r.hrt[0]>0).sort((a,b)=>a.hrt[1]/a.hrt[0]-b.hrt[1]/b.hrt[0]);
+ const fcol=p=>p>=1?'#10b981':p>=.75?'#84cc16':p>=.5?'#f59e0b':'#f43f5e';
+ $('#wFill').style.height=Math.max(220,fl.length*26+50)+'px';
+ put('cFill','bar',fl.map(r=>sh(r.n)),[{label:'Fill rate %',data:fl.map(r=>Math.round(100*r.hrt[1]/r.hrt[0])),backgroundColor:fl.map(r=>fc(r,fcol(r.hrt[1]/r.hrt[0]))),borderRadius:4}],{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{min:0}}},fl.map(r=>r.n),v=>tog(S.fac,v));
+ // bed types
+ const hf=(pre,n)=>M[n].map((_,i)=>S.flags.has(pre+':'+i));
+ const anyF=a=>a.some(Boolean),bf=hf('bt','bed');
+ put('cBt','bar',M.bed,[{label:'Sanctioned',data:M.bed.map((_,i)=>sum(rs,r=>r.bt[i][0])),backgroundColor:bf.map(x=>shade('#f43f5e',!anyF(bf)||x)),borderRadius:4},{label:'Functional',data:M.bed.map((_,i)=>sum(rs,r=>r.bt[i][1])),backgroundColor:bf.map(x=>shade('#f59e0b',!anyF(bf)||x)),borderRadius:4}],{},M.bed.map((_,i)=>i),i=>tog(S.flags,'bt:'+i));
+ // HR cadres
+ const hh=hf('hr','hrk');
+ put('cHr','bar',M.hrk,[{label:'Sanctioned',data:M.hrk.map((_,i)=>sum(rs,r=>r.hr[i][0])),backgroundColor:hh.map(x=>shade('#6366f1',!anyF(hh)||x)),borderRadius:4},{label:'In position',data:M.hrk.map((_,i)=>sum(rs,r=>r.hr[i][1])),backgroundColor:hh.map(x=>shade('#10b981',!anyF(hh)||x)),borderRadius:4}],{indexAxis:'y'},M.hrk.map((_,i)=>i),i=>tog(S.flags,'hr:'+i));
+ // availability
+ const av=S.av,n=M[av].map((_,i)=>rs.filter(r=>r[av][i]!=null).length),y=M[av].map((_,i)=>rs.filter(r=>r[av][i]==1).length),af=hf(av,av);
+ const acol={svc:'#3b82f6',eq:'#ec4899',inf:'#14b8a6'}[av];
+ $('#avTabs').innerHTML=[['svc','Services'],['eq','Equipment'],['inf','Infrastructure']].map(([k,l])=>`<button class="${k==av?'on':''}" data-t="${k}">${l}</button>`).join('');
+ document.querySelectorAll('#avTabs button').forEach(b=>b.onclick=()=>{S.av=b.dataset.t;render()});
+ const ac=put('cAv','bar',M[av],[{label:'% of reporting hospitals',data:y.map((v,i)=>n[i]?Math.round(100*v/n[i]):0),backgroundColor:af.map(x=>shade(acol,!anyF(af)||x)),borderRadius:4}],{indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:t=>` ${t.raw}% (${C.cAv._y[t.dataIndex]} of ${C.cAv._n[t.dataIndex]})`}}},scales:{x:{min:0,max:100}}},M[av].map((_,i)=>av+':'+i),k=>tog(S.flags,k));
+ ac._y=y;ac._n=n;
+ table(fr);
+ $('#foot').textContent=`Source: DH infrastructure workbook (Mar 2026). Total HR = regular + contractual + outsourced posts across non-overlapping cadres (sub-specialities are not double counted). Services, equipment and infrastructure percentages use only hospitals that reported a value; ${R.filter(r=>r.svc[0]==null).length} hospitals have blank services data and ${R.filter(r=>r.sb==null).length} have blank bed data in the source.`}
+function table(fr){
+ const v=a=>S.view=='inpos'?a[1]:S.view=='sanc'?a[0]:S.view=='vac'?Math.max(a[0]-a[1],0):(a[0]?Math.round(100*a[1]/a[0]):null);
+ const q=S.q.toLowerCase(),rows=fr.filter(r=>!q||(r.n+' '+r.d).toLowerCase().includes(q));
+ const key=S.sort[0],dir=S.sort[1],get=r=>key=='n'?r.n:key=='d'?r.d:key=='t'?v(r.hrt):v(r.hr[+key]);
+ rows.sort((a,b)=>{const x=get(a),y=get(b);return(typeof x=='string'?x.localeCompare(y):((x??-1)-(y??-1)))*dir||a.n.localeCompare(b.n)});
+ const cls=a=>{const[s,p]=a;if(!s&&!p)return'g0';const f=s?p/s:2;return f>=1?'g4':f>=.75?'g3':f>=.5?'g2':'g1'};
+ const td=a=>`<td class="${cls(a)}" title="${a[1]} in position of ${a[0]} sanctioned">${a[0]||a[1]?(v(a)??'–'):'–'}</td>`;
+ const tot=i=>rows.reduce((z,r)=>{const a=i=='t'?r.hrt:r.hr[i];return[z[0]+a[0],z[1]+a[1]]},[0,0]);
+ const arrow=k=>S.sort[0]==k?(S.sort[1]>0?' ▲':' ▼'):'';
+ const cols=[['n','Hospital'],['d','District'],...M.hrk.map((n,i)=>[String(i),n]),['t','Total HR']];
+ $('#tbl').innerHTML=`<thead><tr>${cols.map(([k,l])=>`<th data-k="${k}" class="${S.flags.has('hr:'+k)?'hl':''}">${l}${arrow(k)}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr data-n="${r.n.replace(/"/g,'&quot;')}" class="${S.fac.has(r.n)?'sel':S.fac.size?'dim':''}"><td title="${r.n.replace(/"/g,'&quot;')}">${r.n}</td><td>${r.d}</td>${r.hr.map(td).join('')}${td(r.hrt)}</tr>`).join('')}</tbody><tfoot><tr><td>All selected (${rows.length})</td><td></td>${M.hrk.map((_,i)=>td(tot(i))).join('')}${td(tot('t'))}</tr></tfoot>`;
+ document.querySelectorAll('#tbl th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;S.sort=S.sort[0]==k?[k,-S.sort[1]]:[k,k=='n'||k=='d'?1:-1];render()});
+ document.querySelectorAll('#tbl tbody tr').forEach(tr=>tr.onclick=()=>tog(S.fac,tr.dataset.n));
+ $('#tb').innerHTML=[['inpos','In position'],['sanc','Sanctioned'],['vac','Vacant'],['fill','Fill %']].map(([k,l])=>`<button class="${S.view==k?'on':''}" data-v="${k}">${l}</button>`).join('')+`<input id="q" type="search" placeholder="Search hospital or district" value="${S.q.replace(/"/g,'')}">`;
+ document.querySelectorAll('#tb button').forEach(b=>b.onclick=()=>{S.view=b.dataset.v;render()});
+ const qi=$('#q');qi.oninput=()=>{S.q=qi.value;const p=qi.selectionStart;table(fr);const n=$('#q');n.focus();n.setSelectionRange(p,p)}}
+render();
+</script>
+</body></html>
