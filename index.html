@@ -105,10 +105,16 @@ const reset=()=>{for(const k in DIMS)S[k].clear();S.flags.clear();render()};
 const fill=(s,p)=>s?p/s:null;
 const css=getComputedStyle(document.documentElement);
 Chart.defaults.color=css.getPropertyValue('--mu').trim()||'#6b6890';Chart.defaults.font.family="'Plus Jakarta Sans',system-ui,sans-serif";Chart.defaults.borderColor='rgba(128,120,190,.2)';
-const C={};
+const C={},TX=css.getPropertyValue('--tx').trim()||'#1e1b3a',PCT={cFill:1,cAv:1};
+Chart.register({id:'vals',afterDatasetsDraw(ch){
+ const ctx=ch.ctx,t=ch.config.type,hz=ch.options.indexAxis=='y';ctx.save();ctx.font="600 11px 'Plus Jakarta Sans',system-ui,sans-serif";ctx.textBaseline='middle';
+ ch.data.datasets.forEach((ds,di)=>{const m=ch.getDatasetMeta(di);if(m.hidden)return;m.data.forEach((el,i)=>{const v=ds.data[i];if(v==null)return;const s=Number(v).toLocaleString('en-IN')+(PCT[ch.canvas.id]?'%':'');
+  if(t=='doughnut'){if(!v)return;const p=el.tooltipPosition();ctx.fillStyle='#fff';ctx.textAlign='center';ctx.fillText(s,p.x,p.y)}
+  else if(hz){ctx.fillStyle=TX;ctx.textAlign='left';ctx.fillText(s,el.x+5,el.y)}
+  else{ctx.fillStyle=TX;ctx.textAlign='center';ctx.fillText(s,el.x,el.y-9)}})});ctx.restore()}});
 function put(id,type,labels,sets,opt,ids,onclick){
  let c=C[id];
- if(!c){c=C[id]=new Chart($('#'+id),{type,data:{labels,datasets:sets},options:Object.assign({responsive:true,maintainAspectRatio:false,animation:{duration:350},plugins:{legend:{display:sets.length>1||type=='doughnut',position:type=='doughnut'?'bottom':'top',labels:{boxWidth:10,usePointStyle:true}}},onClick:(e,els)=>{if(els.length&&c._ids)onclick(c._ids[els[0].index])},onHover:(e,els)=>{e.native.target.style.cursor=els.length?'pointer':'default'}},opt)})}
+ if(!c){c=C[id]=new Chart($('#'+id),{type,data:{labels,datasets:sets},options:Object.assign({responsive:true,maintainAspectRatio:false,layout:{padding:{right:38,top:14}},animation:{duration:350},plugins:{legend:{display:sets.length>1||type=='doughnut',position:type=='doughnut'?'bottom':'top',labels:{boxWidth:10,usePointStyle:true}}},onClick:(e,els)=>{if(els.length&&c._ids)onclick(c._ids[els[0].index])},onHover:(e,els)=>{e.native.target.style.cursor=els.length?'pointer':'default'}},opt)})}
  else{c.data.labels=labels;c.data.datasets=sets;c.update()}
  c._ids=ids;return c}
 const dim=(base,sel)=>base.map(c=>sel.size==0||sel.has(c.id)?c.col:c.col+'3a');
@@ -163,7 +169,7 @@ function render(){
  // bed types
  const hf=(pre,n)=>M[n].map((_,i)=>S.flags.has(pre+':'+i));
  const anyF=a=>a.some(Boolean),bf=hf('bt','bed');
- put('cBt','bar',M.bed,[{label:'Sanctioned',data:M.bed.map((_,i)=>sum(rs,r=>r.bt[i][0])),backgroundColor:bf.map(x=>shade('#f43f5e',!anyF(bf)||x)),borderRadius:4},{label:'Functional',data:M.bed.map((_,i)=>sum(rs,r=>r.bt[i][1])),backgroundColor:bf.map(x=>shade('#f59e0b',!anyF(bf)||x)),borderRadius:4}],{},M.bed.map((_,i)=>i),i=>tog(S.flags,'bt:'+i));
+ put('cBt','bar',M.bed,[{label:'Sanctioned',data:M.bed.map((_,i)=>sum(rs,r=>r.bt[i][0])),backgroundColor:bf.map(x=>shade('#f43f5e',!anyF(bf)||x)),borderRadius:4},{label:'Functional',data:M.bed.map((_,i)=>sum(rs,r=>r.bt[i][1])),backgroundColor:bf.map(x=>shade('#f59e0b',!anyF(bf)||x)),borderRadius:4}],{indexAxis:'y'},M.bed.map((_,i)=>i),i=>tog(S.flags,'bt:'+i));
  // HR cadres
  const hh=hf('hr','hrk');
  put('cHr','bar',M.hrk,[{label:'Sanctioned',data:M.hrk.map((_,i)=>sum(rs,r=>r.hr[i][0])),backgroundColor:hh.map(x=>shade('#6366f1',!anyF(hh)||x)),borderRadius:4},{label:'In position',data:M.hrk.map((_,i)=>sum(rs,r=>r.hr[i][1])),backgroundColor:hh.map(x=>shade('#10b981',!anyF(hh)||x)),borderRadius:4}],{indexAxis:'y'},M.hrk.map((_,i)=>i),i=>tog(S.flags,'hr:'+i));
